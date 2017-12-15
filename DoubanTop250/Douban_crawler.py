@@ -16,9 +16,10 @@ def get_one_page(url):
 
 
 def parse_one_page(html):
-    pattern = re.compile('<li>.*?<em class="">(\d+).*?href="(.*?)">.*?alt="(.*?)".*?</a>.*?<p class="">.*?:(.*?)'
-    					+'[^A-Za-z.][<br>|&nbsp;&nbsp;&nbsp;].*?(\d+)&nbsp;/&nbsp;(.*?)&nbsp;/&nbsp;(.*?)\n.*?:average">([1-9]\d*\.\d*|0\.\d*[1-9]\d*]+).*?'
-						+'<span>(\d+).*?class="inq">(.*?)</span>.*?</li>', re.S)
+    pattern = re.compile('<li>.*?<em class="">(\d+).*?href="(.*?)">.*?alt="(.*?)".*?</a>.*?<p class="">.*?:(.*?)[^A-Za-z.]'
+			 '[<br>|&nbsp;&nbsp;&nbsp;].*?(\d+)&nbsp;/&nbsp;(.*?)&nbsp;/&nbsp;(.*?)\n.*?:average">([1-9]\d*\.\d*|0\.\d*[1-9]\d*]+)''.*?'
+			+'<span>(\d+).*?class="inq">(.*?)</span>.*?</li>', re.S)
+
     items = re.findall(pattern, html)
     movie =[]
     for item in items:
