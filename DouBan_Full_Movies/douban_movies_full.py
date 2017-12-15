@@ -1,11 +1,11 @@
-import json
-import time
+
 import re
 import csv
+import json
+import time
+import requests
 from lxml import etree
 from urllib.parse import urlencode
-import requests
-import random
 from requests.exceptions import RequestException
 
 
