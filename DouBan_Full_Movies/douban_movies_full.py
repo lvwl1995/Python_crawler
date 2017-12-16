@@ -60,7 +60,7 @@ def get_movie_url(html):
     for data in datas:
         url = data.get('url')
         urls.append(url)
-    print("以获取urls")
+    print("已获取urls")
     get_movie_page(urls)
 
 
