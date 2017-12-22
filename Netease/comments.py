@@ -44,8 +44,8 @@ def post_data(start,end):
 	for i in range(start,end):
 		# 一个i获取10个评论
 		text = {
-			'username': '17660648979',
-			'password': 'leo.0407',
+			'username': '',
+			'password': '',
 			'rememberLogin': 'true',
 			'offset': i * 10
 		}
@@ -59,7 +59,7 @@ def post_data(start,end):
 		}
 		get_page(payload,start, end)
 	start = end
-	end += 10
+	end += 10 #往下抓取，直到最后一页
 	return post_data(start, end)
 
 
@@ -76,7 +76,7 @@ def get_page(payload, start, end):
 		test = jsons.get('more')
 		print(response.text)
 
-		if test == True:
+		if test == True:#检测是否有下一页，若有，程序往下执行
 			for data in hot:
 				nickname = data.get('user').get('nickname')
 				likedcount = data.get('likedCount')
@@ -87,7 +87,7 @@ def get_page(payload, start, end):
 				database(info)
 		else:
 			print("评论抓取完毕")
-	except Exception as e:
+	except Exception as e:#防止意外退出，返回抓取程序重试
 		time.sleep(20)
 		print("重试请求")
 		print(start, end)
@@ -103,7 +103,7 @@ def database(info):
 
 
 def main():
-	post_data(start = 1030, end =1040)
+	post_data(start = 0, end =10)#设置起始于抓取范围，抓取出长度（程序执行一次，实现抓取评论100条）
 
 if __name__ =='__main__':
 	main()
