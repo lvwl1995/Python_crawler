@@ -4,7 +4,7 @@ import re
 import pymysql
 from lxml import etree
 
-
+# get areas
 def get_areas(url):
     print('start grabing areas')
     headers = {
